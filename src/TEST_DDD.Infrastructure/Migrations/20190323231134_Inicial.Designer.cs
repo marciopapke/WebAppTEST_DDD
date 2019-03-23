@@ -10,8 +10,8 @@ using TEST_DDD.Infrastructure.Data;
 namespace TEST_DDD.Infrastructure.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20190323213121_Initial")]
-    partial class Initial
+    [Migration("20190323231134_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

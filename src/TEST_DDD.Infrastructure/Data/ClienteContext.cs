@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TEST_DDD.ApplicationCore.Entity;
+using TEST_DDD.Infrastructure.EntityConfig;
 
 namespace TEST_DDD.Infrastructure.Data
 {
@@ -15,108 +16,22 @@ namespace TEST_DDD.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Adicionando os nomes que você quer que crie no banco de dados. 
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
-
             modelBuilder.Entity<Contato>().ToTable("Contato");
-
             modelBuilder.Entity<Endereco>().ToTable("Endereco");
-
             modelBuilder.Entity<Profissao>().ToTable("Profissao");
-
             modelBuilder.Entity<ProfissaoCliente>().ToTable("ProfissaoCliente");
+            modelBuilder.Entity<Menu>().ToTable("Menu");
 
-
-            #region "Configuração Clientes"
-
-            modelBuilder.Entity<Cliente>().HasKey(c => c.ClienteId);
-
-            modelBuilder.Entity<Cliente>().HasMany(c => c.Contatos)
-                                          .WithOne(c => c.Cliente)
-                                          .HasForeignKey(c => c.ClienteId)
-                                          .HasPrincipalKey(c => c.ClienteId);
-
-            modelBuilder.Entity<Cliente>().Property(e => e.CPF)
-                                            .HasColumnType("varchar(11)")
-                                            .IsRequired();
-
-            modelBuilder.Entity<Cliente>().Property(e => e.Nome)
-                                            .HasColumnType("varchar(200)")
-                                            .IsRequired();
-
-            #endregion
-
-            #region "Configuração Contatos"
-
-            modelBuilder.Entity<Contato>().HasOne(c => c.Cliente)
-                                          .WithMany(c => c.Contatos)
-                                          .HasForeignKey(c => c.ClienteId)
-                                          .HasPrincipalKey(c => c.ClienteId);
-
-            modelBuilder.Entity<Contato>().Property(e => e.Nome)
-                                            .HasColumnType("varchar(200)")
-                                            .IsRequired();
-
-            modelBuilder.Entity<Contato>().Property(e => e.Email)
-                                            .HasColumnType("varchar(100)")
-                                            .IsRequired();
-
-            modelBuilder.Entity<Contato>().Property(e => e.Telefone)
-                                            .HasColumnType("varchar(15)");
-
-            #endregion
-
-            #region "Configuração de Profissão"
-
-            modelBuilder.Entity<Profissao>().Property(e => e.Nome)
-                                          .HasColumnType("varchar(400)")
-                                          .IsRequired();
-
-            modelBuilder.Entity<Profissao>().Property(e => e.CBO)
-                                          .HasColumnType("varchar(10)")
-                                          .IsRequired();
-
-            modelBuilder.Entity<Profissao>().Property(e => e.Descricao)
-                                          .HasColumnType("varchar(1000)")
-                                          .IsRequired();
-
-            #endregion
-
-            #region "Configuração de Endereço"
-
-            modelBuilder.Entity<Endereco>().Property(e => e.Bairro)
-                                         .HasColumnType("varchar(200)")
-                                         .IsRequired();
-
-            modelBuilder.Entity<Endereco>().Property(e => e.CEP)
-                                         .HasColumnType("varchar(15)")
-                                         .IsRequired();
-
-            modelBuilder.Entity<Endereco>().Property(e => e.Logradouro)
-                                       .HasColumnType("varchar(200)")
-                                       .IsRequired();
-
-            modelBuilder.Entity<Endereco>().Property(e => e.Referencia)
-                                      .HasColumnType("varchar(400)");
-            #endregion
-
-            #region "Configuração de Profissão Cliente"
-
-            modelBuilder.Entity<ProfissaoCliente>().HasKey(c => c.Id);
-
-            modelBuilder.Entity<ProfissaoCliente>()
-                        .HasOne(pc => pc.Cliente)
-                        .WithMany(c => c.ProfissoesClientes)
-                        .HasForeignKey(c => c.ClienteId);
-
-            #endregion
-
-            #region "Configuração de Menu"
-
-            modelBuilder.Entity<Menu>().HasMany(c => c.SubMenu)
-                                       .WithOne()
-                                       .HasForeignKey(c => c.MenuId);
-
-            #endregion
+            //Entity config onde crio os Mappings da tabelas ... 
+            //Através da Interface deste cara IEntityTypeConfiguration
+            modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new ContatoMap());
+            modelBuilder.ApplyConfiguration(new ProfissaoMap());
+            modelBuilder.ApplyConfiguration(new EnderecoMap());
+            modelBuilder.ApplyConfiguration(new ProfissaoClienteMap());
+            modelBuilder.ApplyConfiguration(new MenuMap());
         }
     }
 }
