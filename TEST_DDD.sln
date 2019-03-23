@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 -Infrastructure", "3 -Infrastructure", "{009B918E-4412-4DB8-A210-047BE54F76AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST_DDD.ApplicationCore", "src\TEST_DDD.ApplicationCore\TEST_DDD.ApplicationCore.csproj", "{E2E84F1D-2026-47E1-A34B-A928E33FB122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST_DDD.ApplicationCore", "src\TEST_DDD.ApplicationCore\TEST_DDD.ApplicationCore.csproj", "{E2E84F1D-2026-47E1-A34B-A928E33FB122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST_DDD.Infrastructure", "src\TEST_DDD.Infrastructure\TEST_DDD.Infrastructure.csproj", "{F7FC0E5E-276F-4793-B43C-A2B0B4843F7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST_DDD.Infrastructure", "src\TEST_DDD.Infrastructure\TEST_DDD.Infrastructure.csproj", "{F7FC0E5E-276F-4793-B43C-A2B0B4843F7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST_DDD.UI.Web", "src\TEST_DDD.UI.Web\TEST_DDD.UI.Web.csproj", "{B6E748B7-138E-4E9D-9C20-321DA46440F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TEST_DDD.UI.Web", "src\TEST_DDD.UI.Web\TEST_DDD.UI.Web.csproj", "{B6E748B7-138E-4E9D-9C20-321DA46440F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

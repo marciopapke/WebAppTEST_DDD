@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TEST_DDD.ApplicationCore.Entity
 {
-   public class Cliente
+    public class Cliente
     {
         public Cliente()
         {
@@ -12,7 +12,9 @@ namespace TEST_DDD.ApplicationCore.Entity
         }
 
         public int ClienteId { get; set; }
-        public int Nome { get; set; }
-        public int CPF { get; set; }     
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+
+        public ICollection<Contato> Contatos { get; set; }
     }
 }
