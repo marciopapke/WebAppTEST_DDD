@@ -17,7 +17,10 @@ namespace TEST_DDD.Infrastructure.Repository
             _dbContext = dbContext; 
         }
 
-        public TEntity Adicionar(TEntity entity)
+
+        //Coloquei ele como virtual ... para ele ser sobescrito por polimorfismo com override na ClienteRepository.
+        //Ela precisa de mais regras alem do que o Adicionar faz. 
+        public virtual TEntity Adicionar(TEntity entity)
         {
             _dbContext.Set<TEntity>().Add(entity);
             _dbContext.SaveChanges();
